@@ -1,15 +1,33 @@
 
-import React from "react";
+import React, { useState } from "react";
 
+const  FormValidation =  ()=> {
+ 
+  const [Data , setData] = useState({
+    username:'',
+    email:'',
+    password:'',
+    confirmpassword:''
+  })
 
-function App() {
+  const handleChange = (e) =>{
+
+    const {name, value} = e.target;
+     setData({
+        ...Data, [name] : value
+     })
+  }
+
   return (
+
+    <form  >
+
     <div className="App">
       
       <h1>Password Validation </h1>
     <div>
         <label > UserName: </label>
-        <input type="text" name="username"  placeholder="UserName :" />
+        <input type="text" name="username"  placeholder="UserName :" onChange={handleChange} />
     </div>
 
 
@@ -34,10 +52,11 @@ function App() {
     </div>
 
 
- <button type="submit">Submit</button>
+   <button type="submit">Submit</button>
 
     </div>
+    </form>
   );
 }
 
-export default App;
+export default FormValidation;
