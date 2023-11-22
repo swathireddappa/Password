@@ -30,9 +30,9 @@ const  FormValidation =  ()=> {
     if(! Data.email.trim()) {
       validationErrors.email = "eamil is required"
     }
-    else if(/\S@\S\.\S+/.test(Data.email)) {
-      validationErrors.email = "eamil is not valid"
-    }
+    // else if(/\S@\S+\.\S+/.test(Data.email)) {
+    //   validationErrors.email = "email is not valid"
+    // }
 
     if(! Data.password.trim()) {
       validationErrors.password = "password is required"
@@ -42,7 +42,7 @@ const  FormValidation =  ()=> {
     }
 
     if(Data.confirmpassword !== Data.password){
-      validationErrors.confirmpassword = "passwod not matched.."
+      validationErrors.confirmpassword = "password not matched.."
     }
   
 
@@ -60,30 +60,32 @@ const  FormValidation =  ()=> {
       <h1>Password Validation </h1>
     <div>
         <label > UserName: </label>
-        <input type="text" name="username"  placeholder="UserName :" onChange={handleChange} />
+        <input type="text" name="username"  placeholder="UserName :"  onChange={handleChange} />
+        {Errors.username && <span>{Errors.username}</span>}
     </div>
-
-
 
     <div>
       <label > Email:</label>
-      <input type="email" name="email" placeholder="eamil@gmail.com:" />
+      <input type="email" name="email" placeholder="eamil@gmail.com:"  onChange={handleChange}/>
+      {Errors.email && <span>{Errors.email}</span>}
     </div>
-
-
 
     <div>
       <label > Password:</label>
-      <input type="password" name="password" placeholder="*****" />
+      <input type="password" name="password" placeholder="*****" onChange={handleChange} />
+      {Errors.password && <span>{Errors.password}</span>}
     </div>
 
+    {/* validation Tracker */}
 
+
+    
 
     <div>
        <label >Confirm Password:</label>
-      <input type="password" name="confirmpasssword" placeholder="*****" />
+      <input type="password" name="confirmpasssword" placeholder="*****" onChange={handleChange}/>
+      {Errors.confirmpassword && <span>{Errors.confirmpassword}</span>}
     </div>
-
 
    <button type="submit">Submit</button>
 
